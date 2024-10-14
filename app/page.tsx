@@ -1,101 +1,119 @@
-import Image from "next/image";
+"use client"
+import { useState, useEffect } from 'react';
+import Slider from '@/app/components/slider';  // Full-width slider for latest movies
+import Image from 'next/image';
 
-export default function Home() {
+const Home = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/movies')
+      .then(response => response.json())
+      .then(data => setMovies(data));
+  }, []);
+
+  const latestMovies = movies.slice(0, 4);  // First 4 movies
+  const topRatedMovies = movies.filter(movie => movie.rating > 8.0);
+  const actionMovies = movies.filter(movie => movie.category === 'Action');
+  const horrorMovies = movies.filter(movie => movie.category === 'Horror');
+  console.log(actionMovies)
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="container mx-auto -p-6">
+      {/* Full Page Slider */}
+      <Slider movies={latestMovies} />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* New Movies */}
+      <section>
+        <h2 className="text-3xl font-semibold my-4">New Movies</h2>
+        <div className="flex  space-x-4">
+          {movies.slice(4, 10).map((movie) => (
+            <div key={movie.slug} className="min-w-[150px]">
+              <a href={`/${movie.category}/${movie.slug}`} className="block">
+                <img
+                  src={movie.image}
+                  alt={movie.name}
+                  width={500}
+                  className="w-full h-[250px] object-cover" // Ensuring the same height for all images
+                />
+                <p className="text-center">{movie.name}</p>
+              </a>
+            </div>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+
+      {/* Top Rated Movies Slider */}
+      <section>
+        <h2 className="text-3xl font-semibold my-4">Top Rated Movies</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {topRatedMovies.map((movie) => (
+            <a
+              key={movie.slug}
+              href={`/${movie.category}/${movie.slug}`} // Assuming the URL format is /category/movie-slug
+              className="movie-card group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            >
+              <img
+                src={movie.image}
+                alt={movie.name}
+                className="w-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white text-lg font-medium">{movie.name}</h3>
+                <p className="text-white mt-2">{movie.rating} ⭐</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+
+      {/* Action Movies */}
+      <section>
+        <h2 className="text-3xl font-semibold my-4">Action Movies</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {actionMovies.map(movie => (
+            <a
+              key={movie.slug}
+              href={`/${movie.category}/${movie.slug}`} // Assuming the URL format is /category/movie-slug
+              className=" relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300" // Added hover shadow effect
+            >
+              <img
+                src={movie.image}
+                alt={movie.name}
+                className="w-full object-cover transform transition-transform duration-300 hover:scale-105" // Set fixed height and hover effect
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300 hover:opacity-100">
+                <h3 className="text-white text-lg font-medium">{movie.name}</h3>
+                <p className="text-white mt-2 p-3">{movie.description}</p>
+              </div>
+              <div className="bg-stone-900 px-3 py-2 flex justify-between">
+                <p className="text-white p-1">{movie.rating}</p>
+                <p className="text-white p-1">{movie.releaseDate}</p>
+              </div>
+
+
+
+            </a>
+          ))}
+        </div>
+      </section>
+
+
+      {/* Horror Movies */}
+      <section>
+        <h2 className="text-3xl font-semibold my-4">Horror Movies</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {horrorMovies.map(movie => (
+            <div key={movie.slug} className="movie-card">
+              {/* <Image src={movie.image} alt={movie.name} width={500} /> */}
+              <h3>{movie.name}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
-}
+};
+
+export default Home;

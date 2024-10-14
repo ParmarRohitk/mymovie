@@ -25,3 +25,22 @@ body {
     text-wrap: balance;
   }
 }
+
+
+/* styles/globals.css */
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.movie-card {
+  padding: 10px;
+  text-align: center;
+}
+
+.movie-poster {
+  max-width: 100%;
+  height: auto;
+}
