@@ -7,11 +7,11 @@ export const metadata = {
   openGraph: {
     title: "Watch New & Top-Rated Movies Online",
     description: "Stream the latest films, explore action-packed movies, and watch trailers of upcoming releases.",
-    url: "https://movie.com",
+    url: "https://cinemaio.vercel.app",
     type: "website",
     images: [
       {
-        url: "https://movie.com/images/og-image.jpg",
+        url: "https://cinemaio.vercel.app/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Latest Movies Poster",
@@ -23,18 +23,18 @@ export const metadata = {
     site: "@yourTwitterHandle",
     title: "New & Top-Rated Movies | Watch Online",
     description: "Stream the latest movies and top-rated films in action, horror, and more categories.",
-    image: "https://movie.com/images/twitter-image.jpg",
+    image: "https://cinemaio.vercel.app/images/twitter-image.jpg",
   },
   robots: {
     index: true,
     follow: true,
   },
-  canonical: "https://movie.com",
+  canonical: "https://cinemaio.vercel.app",
   alternates: {
-    canonical: "https://movie.com",
+    canonical: "https://cinemaio.vercel.app",
     languages: {
-      "en-US": "https://movie.com/en",
-      "fr-FR": "https://movie.com/fr"
+      "en-US": "https://cinemaio.vercel.app/en",
+      "fr-FR": "https://cinemaio.vercel.app/fr"
     }
   },
 };
