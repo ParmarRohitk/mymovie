@@ -49,7 +49,7 @@ const Home = () => {
 
     // const latestMovies = movies.slice(0, 23);  // First 4 movies
     const topRatedMovies = movies.filter(movie => movie.rating > 8.0);
-    const actionMovies = movies.filter(movie => movie.category.split(", ")[0] === 'Action');
+    const actionMovies = movies.filter(movie => movie.category.split(", ")[0] === 'action');
 
     return (
         <>
@@ -64,24 +64,32 @@ const Home = () => {
                 </section>
 
                 {/* New Movies */}
-                <section className='p-5'>
-                    <div className='p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg'>
-                        <h2 className="text-3xl font-semibold my-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-600 animate-pulse">New Movies</h2>
-                        <div className="flex space-x-4">
+                <section className="p-5">
+                    <div className="p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg">
+                        <h2 className="text-3xl font-semibold my-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-600 animate-pulse">
+                            New Movies
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"> {/* Responsive grid layout */}
                             {loading ? (
-                                Array(6).fill(0).map((_, index) => (
-                                    <SkeletonLoader key={index} width={200} height={300} className='' />
-                                ))
+                                Array(6)
+                                    .fill(0)
+                                    .map((_, index) => (
+                                        <SkeletonLoader key={index} width={200} height={300} className="" />
+                                    ))
                             ) : (
                                 movies.slice(4, 10).map((movie) => (
-                                    <div key={movie.slug}
+                                    <div
+                                        key={movie.slug}
                                         className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
                                     >
-                                        <a href={`/${movie.category.split(", ")[0]}/${movie.slug}`} className="block relative">
+                                        <a
+                                            href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
+                                            className="block relative"
+                                        >
                                             <img
                                                 src={movie.image}
                                                 alt={movie.name}
-                                                className="w-[200px] h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110" // Smooth scaling animation on hover
+                                                className="w-full h-[auto] md:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110" // Full width with smooth scaling on hover
                                             />
                                             <div className="absolute inset-0 bg-black bg-opacity-60 rounded-lg flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 <p className="text-white text-center text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -95,6 +103,7 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
+
 
                 {/* Top Rated Movies */}
                 <section className='p-5'>
@@ -136,10 +145,10 @@ const Home = () => {
                 <section className='p-5'>
                     <div className='p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg'>
                         <h2 className="text-3xl font-semibold my-4 text-white">Action Movies</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
                             {loading ? (
                                 Array(4).fill(0).map((_, index) => (
-                                    <SkeletonLoader key={index} width={200} height={350} className="full" />
+                                    <SkeletonLoader key={index} width={200} height={300} className="full" />
                                 ))
                             ) : (
                                 actionMovies.map((movie) => (
@@ -151,7 +160,8 @@ const Home = () => {
                                         <img
                                             src={movie.image}
                                             alt={movie.name}
-                                            className="w-full h-[350px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
+                                            className="w-full h-[auto] md:h-[300px] sm:h-[300px] lg:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
+                                        // className="w-full h-[350px] md:[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
                                         />
                                         <div className="absolute inset-0 text-center bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                                             <h3 className="text-white mb-2 text-lg font-semibold translate-y-4 hover:translate-y-0 transition-transform duration-500 ease-in-out">

@@ -129,7 +129,7 @@ const MovieDetailPage = () => {
           {movieData.screenshots && movieData.screenshots.length > 0 && (
             <div className="mb-10">
               <h2 className="text-2xl font-semibold mb-4">Screenshots</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {movieData.screenshots.map((screenshot, index) => (
                   <img
                     key={index}
@@ -146,7 +146,7 @@ const MovieDetailPage = () => {
           {recommendedMovies.length > 0 && (
             <div className="mt-10">
               <h2 className="text-3xl font-semibold mb-6 text-center">You May Also Like</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                 {recommendedMovies.map((recMovie) => (
                   <a
                     key={recMovie.slug}
@@ -156,7 +156,7 @@ const MovieDetailPage = () => {
                     <img
                       src={recMovie.image}
                       alt={recMovie.name}
-                      className="w-full h-[300px] object-cover"
+                      className="w-full h-[auto] md:h-[300px] object-cover"
                     />
                     <div className="p-4">
                       <h3 className="text-lg font-bold mb-2">{recMovie.name}</h3>
