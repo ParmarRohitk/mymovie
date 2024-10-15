@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Inside Out 2",
     "slug": "inside-out-2",
-    "category": "Animation",
+    "category": "Animation, English",
     "rating": 8.7,
     "duration": "1h 36min",
     "releaseDate": "June 14, 2024",
@@ -22,7 +22,7 @@
     "id": 2,
     "name": "Deadpool & Wolverine",
     "slug": "deadpool-wolverine",
-    "category": "Action",
+    "category": "Action, English",
     "rating": 8.5,
     "duration": "140 minutes",
     "releaseDate": "May 3, 2024",
@@ -60,7 +60,7 @@
     "id": 4,
     "name": "Dune: Part 2",
     "slug": "dune-part-2",
-    "category": "Sci-Fi",
+    "category": "Sci-Fi, English",
     "rating": 8.4,
     "duration": "155 minutes",
     "releaseDate": "November 3, 2024",
@@ -188,6 +188,246 @@
     "/images/twisters_3.webp"
   ],
   "recommended": [1, 2, 3, 4]
-}
+},
+ {
+        "id": 11,
+        "name": "Jhamkudi",
+        "slug": "jhamkudi",
+        "category": "Comedy",
+        "rating": 7.0,
+        "duration": "120 minutes",
+        "releaseDate": "January 10, 2024",
+        "language": "Gujarati",
+        "description": "A light-hearted comedy revolving around the misadventures of a group of friends.",
+        "image": "/images/jhamkudi.webp",
+        "trailer": "https://youtu.be/nN-jQTEeWTw?si=Tzp65b60B0FYM_e-",
+        "screenshots": [
+          "/images/jhamkudi_1.webp",
+          "/images/jhamkudi_2.webp",
+          "/images/jhamkudi_3.webp"
+        ],
+        "recommended": [12, 13, 14, 15]
+      },
+      {
+        "id": 12,
+        "name": "Frendo",
+        "slug": "frendo",
+        "category": "Drama",
+        "rating": 8.1,
+        "duration": "135 minutes",
+        "releaseDate": "February 14, 2024",
+        "language": "Gujarati",
+        "description": "A touching story about friendship and overcoming personal struggles.",
+        "image": "/images/frendo.webp",
+        "trailer": "https://youtu.be/UzjxOaLMfoM?si=EvlaATwQl__EIibB",
+        "screenshots": [
+          "/images/frendo_1.webp",
+          "/images/frendo_2.webp",
+          "/images/frendo_3.webp"
+        ],
+        "recommended": [11, 13, 14, 15]
+      },
+      {
+        "id": 13,
+        "name": "Locha Laapsi",
+        "slug": "locha-laapsi",
+        "category": "Comedy",
+        "rating": 7.5,
+        "duration": "110 minutes",
+        "releaseDate": "March 5, 2024",
+        "language": "Gujarati",
+        "description": "A comedic take on the chaos that ensues during a wedding.",
+        "image": "/images/locha_laapsi.webp",
+        "trailer": "https://youtu.be/ns9RodI1rqU?si=HQuJWXjxXffB1Ojx",
+        "screenshots": [
+          "/images/locha_laapsi_1.webp",
+          "/images/locha_laapsi_2.webp",
+          "/images/locha_laapsi_3.webp"
+        ],
+        "recommended": [11, 12, 14, 15]
+      },
+      {
+        "id": 14,
+        "name": "Udan Chhoo",
+        "slug": "udan-chhoo",
+        "category": "Adventure",
+        "rating": 8.3,
+        "duration": "145 minutes",
+        "releaseDate": "April 20, 2024",
+        "language": "Gujarati",
+        "description": "An inspiring adventure film about a child's dream of flying.",
+        "image": "/images/udan_chhoo.webp",
+        "trailer": "https://youtu.be/l1LtFOs8NSw?si=ulTyt43tdoIuvFWu",
+        "screenshots": [
+          "/images/udan_chhoo_1.webp",
+          "/images/udan_chhoo_2.webp",
+          "/images/udan_chhoo_3.webp"
+        ],
+        "recommended": [11, 12, 13, 15]
+      },
+      {
+        "id": 15,
+        "name": "Danny Jigar",
+        "slug": "danny-jigar",
+        "category": "Action",
+        "rating": 8.0,
+        "duration": "130 minutes",
+        "releaseDate": "May 10, 2024",
+        "language": "Gujarati",
+        "description": "A high-octane action film featuring a hero's quest for justice.",
+        "image": "/images/danny_jigar.webp",
+        "trailer": "https://youtu.be/ydls-OFHhR8?si=N4JMII6AgtU-bkz2",
+        "screenshots": [
+          "/images/danny_jigar_1.webp"
+        ],
+        "recommended": [11, 12, 13, 14]
+      },
+      {
+        "id": 16,
+        "name": "Fakt Purusho Maate",
+        "slug": "fakt-purusho-maate",
+        "category": "Comedy",
+        "rating": 7.2,
+        "duration": "115 minutes",
+        "releaseDate": "June 15, 2024",
+        "language": "Gujarati",
+        "description": "A comedy that showcases the lives of men navigating through modern relationships.",
+        "image": "/images/fakt_purusho_maate.webp",
+        "trailer": "https://youtu.be/f1F4nRNoBPQ?si=iK2L-G9FfL06LQTw",
+        "screenshots": [
+          "/images/fakt_purusho_maate_1.webp",
+          "/images/fakt_purusho_maate_2.webp",
+          "/images/fakt_purusho_maate_3.webp"
+        ],
+        "recommended": [11, 12, 13, 14]
+      },
+      {
+        "id": 17,
+        "name": "Vanilla Ice Cream",
+        "slug": "vanilla-ice-cream",
+        "category": "Romance",
+        "rating": 7.8,
+        "duration": "125 minutes",
+        "releaseDate": "July 25, 2024",
+        "language": "Gujarati",
+        "description": "A romantic drama set against the backdrop of a quaint ice cream shop.",
+        "image": "/images/vanilla_ice_cream.webp",
+        "trailer": "https://youtu.be/m_apfZkKPRU?si=WO2lABqaevvJC86E",
+        "screenshots": [
+          "/images/vanilla_ice_cream_1.webp"
+        ],
+        "recommended": [11, 12, 13, 14]
+      },
+      {
+        "id": 18,
+        "name": "Vaar Tahevaar",
+        "slug": "vaar-tahevaar",
+        "category": "Drama",
+        "rating": 8.0,
+        "duration": "140 minutes",
+        "releaseDate": "August 30, 2024",
+        "language": "Gujarati",
+        "description": "A powerful drama exploring themes of sacrifice and family bonds.",
+        "image": "/images/vaar_tahevaar.webp",
+        "trailer": "https://youtu.be/1SwarvWNZhY?si=EfcXIgCk_1P_4uNv",
+        "screenshots": [
+          "/images/vaar_tahevaar_1.webp"
+        ],
+        "recommended": [11, 12, 13, 14]
+      },
+        {
+        "id": 19,
+        "name": "Khel Khel Mein",
+        "slug": "khel-khel-mein",
+        "category": "Comedy",
+        "rating": 7.5,
+        "duration": "130 minutes",
+        "releaseDate": "January 10, 2024",
+        "language": "Hindi",
+        "description": "A fun comedy about childhood games and adventures.",
+        "image": "/images/khel_khel_mein.webp",
+        "trailer": "https://youtu.be/RKZJtoFoaQg?si=WB4K5Q87Jxk8iCeO",
+        "screenshots": [
+          "/images/khel_khel_mein_1.webp",
+          "/images/khel_khel_mein_2.webp"
+        ],
+        "recommended": [20, 21, 22, 23]
+      },
+      {
+        "id": 20,
+        "name": "CTRL",
+        "slug": "ctrl",
+        "category": "Thriller",
+        "rating": 8.3,
+        "duration": "120 minutes",
+        "releaseDate": "February 14, 2024",
+        "language": "Hindi",
+        "description": "A suspenseful thriller that questions the boundaries of technology.",
+        "image": "/images/ctrl.webp",
+        "trailer": "https://youtu.be/KEfeMPGj-Dw?si=AfWVURfyuXUIM4J7",
+        "screenshots": [
+          "/images/ctrl_1.webp",
+          "/images/ctrl_2.webp",
+          "/images/ctrl_3.webp"
+        ],
+        "recommended": [21, 22, 19, 20]
+      },
+      {
+        "id": 21,
+        "name": "Vedaa",
+        "slug": "vedaa",
+        "category": "Fantasy",
+        "rating": 8.0,
+        "duration": "145 minutes",
+        "releaseDate": "March 15, 2024",
+        "language": "Hindi",
+        "description": "A magical journey of self-discovery set in a vibrant fantasy world.",
+        "image": "/images/vedaa.webp",
+        "trailer": "https://youtu.be/_jr8HiBykLA?si=ECvgMwHgfByxbDbf",
+        "screenshots": [
+          "/images/vedaa_1.webp",
+          "/images/vedaa_2.webp",
+          "/images/vedaa_3.webp"
+        ],
+        "recommended": [22, 23, 19, 20]
+      },
+      {
+        "id": 22,
+        "name": "Ulajh",
+        "slug": "ulajh",
+        "category": "Drama",
+        "rating": 8.4,
+        "duration": "130 minutes",
+        "releaseDate": "April 20, 2024",
+        "language": "Hindi",
+        "description": "An emotional drama exploring the complexities of family relationships.",
+        "image": "/images/ulajh.webp",
+        "trailer": "https://youtu.be/ge6BKalmxsE?si=3uY1E3Vi8_ts4PTQ",
+        "screenshots": [
+          "/images/ulajh_1.webp",
+          "/images/ulajh_2.webp",
+          "/images/ulajh_3.webp"
+        ],
+        "recommended": [23, 21, 19, 20]
+      },
+      {
+        "id": 23,
+        "name": "Visfot",
+        "slug": "visfot",
+        "category": "Action",
+        "rating": 8.5,
+        "duration": "140 minutes",
+        "releaseDate": "May 25, 2024",
+        "language": "Hindi",
+        "description": "A high-energy action film that keeps you on the edge of your seat.",
+        "image": "/images/visfot.webp",
+        "trailer": "https://youtu.be/5FtOsxgI9DA?si=u0sORCS7LZPeLHbY",
+        "screenshots": [
+          "/images/visfot_1.webp",
+          "/images/visfot_2.webp",
+          "/images/visfot_3.webp"
+        ],
+        "recommended": [22, 21, 20, 19]
+      }
 
 ]

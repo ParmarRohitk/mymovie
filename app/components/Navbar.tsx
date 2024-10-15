@@ -25,9 +25,9 @@ const Navbar = () => {
                 {/* Nav links (hidden on small screens and shown on larger screens) */}
                 <nav className={`lg:block ${isMenuOpen ? 'block' : 'hidden'} absolute lg:static top-16 right-0 bg-black lg:bg-transparent w-full lg:w-auto`}>
                     <ul className="flex flex-col lg:flex-row lg:space-x-6 space-y-6 lg:space-y-0 p-6 lg:p-0 text-center lg:text-left">
-                        <li><a href="/hindi" className="text-white hover:text-gray-300">Hindi Movies</a></li>
-                        <li><a href="/english" className="text-white hover:text-gray-300">English Movies</a></li>
-                        <li><a href="/gujarati" className="text-white hover:text-gray-300">Gujarati Movies</a></li>
+                        <li><a href="/in/hindi" className="text-white hover:text-gray-300">Hindi Movies</a></li>
+                        <li><a href="/in/english" className="text-white hover:text-gray-300">English Movies</a></li>
+                        <li><a href="/in/gujarati" className="text-white hover:text-gray-300">Gujarati Movies</a></li>
                     </ul>
                 </nav>
             </div>

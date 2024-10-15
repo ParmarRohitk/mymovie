@@ -18,39 +18,40 @@ const Slider = ({ movies }) => {
   return (
     <div className="relative w-full min-h-screen bg-gray-800 overflow-hidden">
       {movies.map((movie, index) => (
-        <Link key={index} href={`/${movie.category}/${movie.slug}`}>
-          <div
-            className={`absolute w-full h-full transition-opacity duration-1000 ${
-              index === activeSlide ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {/* Movie Image */}
-            {movie.image ? (
-              <img
-                src={movie.image}
-                alt={movie.name}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full bg-black"></div>
-            )}
+        // <Link key={index} href={`/${movie.language}/${movie.slug}`}>
+        <div
+          key={index}
+          className={`absolute w-full h-full transition-opacity duration-1000 ${
+            index === activeSlide ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {/* Movie Image */}
+          {movie.image ? (
+            <img
+              src={movie.image}
+              alt={movie.name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full bg-black"></div>
+          )}
 
-            {/* Left-Side Black Shadow with Movie Info */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent">
-              <div className="absolute bottom-0 left-0 p-8 text-white max-w-md">
-                <h2 className="text-4xl font-bold mb-4">{movie.name}</h2>
-                <p className="text-lg">{movie.description}</p>
-                <div className="mt-4">
-                  <span className="text-yellow-400">{movie.rating} ⭐</span>
-                  <span className="ml-4">{movie.releaseDate}</span>
-                </div>
+          {/* Left-Side Black Shadow with Movie Info */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent">
+            <div className="absolute bottom-0 left-0 p-8 text-white max-w-md">
+              <h2 className="text-4xl font-bold mb-4">{movie.name}</h2>
+              <p className="text-lg">{movie.description}</p>
+              <div className="mt-4">
+                <span className="text-yellow-400">{movie.rating} ⭐</span>
+                <span className="ml-4">{movie.releaseDate}</span>
               </div>
             </div>
-
-            {/* Top-to-Bottom Black Shadow */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60"></div>
           </div>
-        </Link>
+
+          {/* Top-to-Bottom Black Shadow */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60"></div>
+        </div>
+        // </Link>
       ))}
 
       {/* Optional: Manual Navigation Controls */}
