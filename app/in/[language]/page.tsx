@@ -76,8 +76,8 @@ const LanguagePage = ({ params }: { params: { language: string } }) => {
         <meta name="keywords" content={`${language} movies, top ${language} films, best ${language} movies`} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={`http://localhost:3000//${language}`} />
-        <link rel="canonical" href={`http://localhost:3000//${language}`} />
+        <meta property="og:url" content={`https://cinemaio.vercel.app//${language}`} />
+        <link rel="canonical" href={`https://cinemaio.vercel.app//${language}`} />
       </head>
 
       <div className="pt-[100px] px-9 pt-[50px]">
