@@ -36,7 +36,7 @@ const MovieDetailPage = () => {
       .then((data) => {
         const foundMovie = data.find(
           (m: Movie) =>
-            m.slug === movie && m.category.toLowerCase() === category.toLowerCase()
+            m.slug === movie && m.category.toLowerCase() === category
         );
         setMovieData(foundMovie);
 

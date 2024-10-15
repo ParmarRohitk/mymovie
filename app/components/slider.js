@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Link from "next/link"; // Import Next.js Link for client-side navigation
 
 const Slider = ({ movies }) => {
   const [activeSlide, setActiveSlide] = useState(0);

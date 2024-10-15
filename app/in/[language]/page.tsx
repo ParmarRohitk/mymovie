@@ -1,13 +1,13 @@
 'use client'
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Head from "next/head";
 
 interface Movie {
   slug: string;
   name: string;
   description: string;
   image: string;
+  category: string;
   language: string;
   releaseDate: string;
   duration: string;
