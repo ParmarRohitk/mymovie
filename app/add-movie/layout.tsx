@@ -1,19 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Top Movie Streaming Platform - Watch Latest Movies",
@@ -56,16 +41,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="google-site-verification" content="O5RyKRlsslVL2SRzbfS8uWFZJyaTm7fLpN3x5u1BG4g" />
-      </head>
-
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
+        <header className="fixed top-0 left-0 w-full p-5  z-50 ">
+          <div className="container mx-auto flex justify-between items-center">
+            <a href="/">
+              <h1 className="text-3xl font-bold text-white">Movie</h1>
+            </a>
+
+            <nav className={` absolute lg:static top-16 right-0 bg-black lg:bg-transparent w-full lg:w-auto`}>
+              <ul className="flex flex-col lg:flex-row lg:space-x-6 space-y-6 lg:space-y-0 p-6 lg:p-0 text-center lg:text-left">
+                <li><a href="/list" className="text-white hover:text-gray-300">Gujarati Movies</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
         <main className="-p-4 pb-9">{children}</main>
-        <Footer />
       </body>
     </html>
   );

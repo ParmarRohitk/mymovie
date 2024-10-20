@@ -1,5 +1,3 @@
-// app/api/movies/[slug]/route.ts
-
 import { NextResponse } from 'next/server';
 
 const movies = [
