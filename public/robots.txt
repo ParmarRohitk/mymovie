@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://cinemaio.vercel.app/
+Host: https://moviestremtv.com/
 
 # Sitemaps
-Sitemap: https://cinemaio.vercel.app/sitemap.xml
+Sitemap: https://moviestremtv.com/sitemap.xml

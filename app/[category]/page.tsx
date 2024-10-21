@@ -66,7 +66,7 @@ const CategoryPage = ({ params }: { params: { category: string } }) => {
     <div className="pt-[100px] px-9 pt-[50px]">
       {movies.length > 0 ? (
         <>
-          <h1 className="pb-5 text-xl flex items-center justify-center">{category} Movies</h1>
+          <h1 className="pb-5 text-xl flex items-center justify-center">{category.toUpperCase()} Movies</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {movies.map((movie) => (
               <Link

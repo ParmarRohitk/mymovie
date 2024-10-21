@@ -53,7 +53,7 @@ const Home = () => {
 
     return (
         <>
-            <div className="container mx-auto">
+            <div className="mx-auto">
                 {/* Full Page Hero Slider */}
                 <section className='mb-10'>
                     {/* {loading ? (

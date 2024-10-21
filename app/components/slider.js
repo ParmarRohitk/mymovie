@@ -15,9 +15,8 @@ const Slider = ({ movies }) => {
   }, [movies.length]);
 
   return (
-    <div className="relative w-full min-h-screen bg-gray-800 overflow-hidden">
+    <div className="relative w-full h-screen bg-gray-800 overflow-hidden">
       {movies.map((movie, index) => (
-        // <Link key={index} href={`/${movie.language}/${movie.slug}`}>
         <div
           key={index}
           className={`absolute w-full h-full transition-opacity duration-1000 ${
@@ -38,8 +37,10 @@ const Slider = ({ movies }) => {
           {/* Left-Side Black Shadow with Movie Info */}
           <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent">
             <div className="absolute bottom-0 left-0 p-8 text-white max-w-md">
-              <h2 className="text-4xl font-bold mb-4">{movie.name}</h2>
-              <p className="text-lg">{movie.description}</p>
+              <h2 className="text-2xl lg:text-4xl font-bold mb-2 lg:mb-4">
+                {movie.name}
+              </h2>
+              <p className="text-base lg:text-lg">{movie.description}</p>
               <div className="mt-4">
                 <span className="text-yellow-400">{movie.rating} ⭐</span>
                 <span className="ml-4">{movie.releaseDate}</span>
@@ -50,7 +51,6 @@ const Slider = ({ movies }) => {
           {/* Top-to-Bottom Black Shadow */}
           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60"></div>
         </div>
-        // </Link>
       ))}
 
       {/* Optional: Manual Navigation Controls */}

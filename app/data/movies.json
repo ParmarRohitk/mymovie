@@ -696,12 +696,12 @@
     "releaseDate": "2024",
     "language": "english",
     "description": "A gripping thriller about a mysterious substance that threatens humanity’s existence.",
-    "image": "/images/the_substance.webp",
+    "image": "/images/the-substance.webp",
     "trailer": "https://youtu.be/LNlrGhBpYjc?si=kYojnWo_h83p5_1K",
     "screenshots": [
-      "/images/the_substance_1.webp",
-      "/images/the_substance_2.webp",
-      "/images/the_substance_3.webp"
+      "/images/the-substance_1.webp",
+      "/images/the-substance_2.webp",
+      "/images/the-substance_3.webp"
     ],
     "recommended": [
       29,

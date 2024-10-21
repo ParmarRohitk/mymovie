@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className="items-center text-center ">
                     {/* Footer Text */}
                     <p className="text-sm sm:text-base mb-4 sm:mb-0">
-                        ©2024 <span className="font-semibold">Movie</span> | All Rights Reserved
+                        ©2024 <span className="font-semibold">Moviestremtv</span> | All Rights Reserved
                     </p>
                 </div>
             </div>
