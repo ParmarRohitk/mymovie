@@ -19,6 +19,8 @@ const AddMovieForm = () => {
     screenshots: [""],
     recommended: "",
   });
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [screenshotPreviews, setScreenshotPreviews] = useState<string[]>([]);
   const [message, setMessage] = useState<string | null>(null);
 
   // Function to generate slug
@@ -30,15 +32,54 @@ const AddMovieForm = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index?: number) => {
     const { name, value } = e.target;
 
-    if (name === "screenshots" && index !== undefined) {
-      const newScreenshots = [...movieData.screenshots];
-      newScreenshots[index] = `${generateSlug(movieData.name)}-${index + 1}.webp`; // Generate screenshot filename
-      setMovieData({ ...movieData, screenshots: newScreenshots });
-    } else if (name === "name") {
-      const slug = generateSlug(value);
-      setMovieData({ ...movieData, name: value, slug, image: `/images/${slug}.webp` });
+    // Cast to HTMLInputElement for file input
+    const target = e.target as HTMLInputElement;
+
+    if (name === "recommended") {
+      setMovieData((prev) => ({ ...prev, [name]: value }));
     } else {
-      setMovieData({ ...movieData, [name]: value });
+      if (name === "name") {
+        const slug = generateSlug(value);
+        setMovieData((prev) => ({ ...prev, name: value, slug }));
+      } else {
+        setMovieData((prev) => ({ ...prev, [name]: value }));
+      }
+
+      if (name === "screenshots" && index !== undefined && target.files?.[0]) {
+        const file = target.files[0];
+        if (!file.name.endsWith(".webp")) {
+          setMessage("Only .webp files are allowed for screenshots.");
+          return;
+        }
+
+        const newScreenshots = [...movieData.screenshots];
+        const slugifiedScreenshot = `/images/${generateSlug(movieData.name)}_${index + 1}.webp`;
+        newScreenshots[index] = slugifiedScreenshot;
+        setMovieData({ ...movieData, screenshots: newScreenshots });
+
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+          const newPreviews = [...screenshotPreviews];
+          newPreviews[index] = fileReader.result as string;
+          setScreenshotPreviews(newPreviews);
+        };
+        fileReader.readAsDataURL(file);
+      } else if (name === "image" && target.files?.[0]) {
+        const file = target.files[0];
+        if (!file.name.endsWith(".webp")) {
+          setMessage("Only .webp files are allowed for the poster image.");
+          return;
+        }
+
+        const slug = generateSlug(movieData.name);
+        setMovieData({ ...movieData, slug, image: `/images/${slug}.webp` });
+
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+          setImagePreview(fileReader.result as string);
+        };
+        fileReader.readAsDataURL(file);
+      }
     }
   };
 
@@ -46,12 +87,15 @@ const AddMovieForm = () => {
   // Add new screenshot field
   const addScreenshot = () => {
     setMovieData({ ...movieData, screenshots: [...movieData.screenshots, ""] });
+    setScreenshotPreviews([...screenshotPreviews, ""]);
   };
 
   // Remove screenshot field
   const removeScreenshot = (index: number) => {
     const newScreenshots = movieData.screenshots.filter((_, i) => i !== index);
+    const newPreviews = screenshotPreviews.filter((_, i) => i !== index);
     setMovieData({ ...movieData, screenshots: newScreenshots });
+    setScreenshotPreviews(newPreviews);
   };
 
   // Handle form submission
@@ -62,13 +106,13 @@ const AddMovieForm = () => {
       const newMovie = {
         ...movieData,
         rating: parseFloat(movieData.rating),
-        recommended: movieData.recommended.split(",").map((id) => parseInt(id.trim())),
+        recommended: movieData.recommended.split(",").map((id) => parseInt(id.trim())), // Convert to array of numbers
       };
 
-      const response = await fetch('/api/addmovie', {
-        method: 'POST',
+      const response = await fetch("/api/addmovie", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(newMovie),
       });
@@ -89,6 +133,8 @@ const AddMovieForm = () => {
           screenshots: [""],
           recommended: "",
         });
+        setImagePreview(null);
+        setScreenshotPreviews([]);
 
         setTimeout(() => {
           setMessage(null);
@@ -121,7 +167,6 @@ const AddMovieForm = () => {
             required
             className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
           />
-          {/* Category */}
           <input
             type="text"
             name="category"
@@ -131,7 +176,6 @@ const AddMovieForm = () => {
             required
             className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
           />
-          {/* Rating */}
           <input
             type="number"
             name="rating"
@@ -142,7 +186,6 @@ const AddMovieForm = () => {
             step="0.1"
             className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
           />
-          {/* Duration */}
           <input
             type="text"
             name="duration"
@@ -152,7 +195,6 @@ const AddMovieForm = () => {
             required
             className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
           />
-          {/* Release Date */}
           <input
             type="text"
             name="releaseDate"
@@ -162,7 +204,6 @@ const AddMovieForm = () => {
             required
             className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
           />
-          {/* Language */}
           <input
             type="text"
             name="language"
@@ -172,7 +213,6 @@ const AddMovieForm = () => {
             required
             className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
           />
-          {/* Description */}
           <textarea
             name="description"
             value={movieData.description}
@@ -181,15 +221,6 @@ const AddMovieForm = () => {
             required
             className="w-full md:col-span-2 p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300 h-28 resize-none"
           />
-          {/* Image */}
-          <input
-            type="file"
-            name="image"
-            value={movieData.image}
-            placeholder="Auto-generated Image URL"
-            className="w-full p-2 border rounded-md text-black bg-gray-100 focus:outline-none"
-          />
-          {/* Trailer */}
           <input
             type="text"
             name="trailer"
@@ -199,18 +230,30 @@ const AddMovieForm = () => {
             required
             className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
           />
+
+          {/* Image upload */}
+          <input
+            type="file"
+            name="image"
+            onChange={handleInputChange}
+            accept=".webp"
+            required
+            className="w-full p-2 border rounded-md text-black bg-gray-100 focus:outline-none"
+          />
+          {imagePreview && <img src={imagePreview} alt="Poster Preview" className="w-48 h-72 object-cover border rounded-md" />}
+
           {/* Screenshots */}
           {movieData.screenshots.map((screenshot, index) => (
             <div key={index} className="flex items-center space-x-2">
               <input
-                type="text"
+                type="file"
                 name="screenshots"
-                value={screenshot}
                 onChange={(e) => handleInputChange(e, index)}
-                placeholder={`Screenshot ${index + 1} URL (auto-generated)`}
-                readOnly
+                accept=".webp"
+                required
                 className="w-full p-2 border rounded-md text-black bg-gray-100 focus:outline-none"
               />
+              {screenshotPreviews[index] && <img src={screenshotPreviews[index]} alt={`Screenshot ${index + 1}`} className="w-48 h-32 object-cover border rounded-md" />}
               <button
                 type="button"
                 onClick={() => removeScreenshot(index)}
@@ -220,6 +263,15 @@ const AddMovieForm = () => {
               </button>
             </div>
           ))}
+          <input
+            type="text"
+            name="recommended"
+            value={movieData.recommended}
+            onChange={handleInputChange}
+            placeholder="Recommended Movies (1,2,3,4)"
+            required
+            className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
+          />
           <button
             type="button"
             onClick={addScreenshot}
@@ -227,16 +279,8 @@ const AddMovieForm = () => {
           >
             Add Screenshot
           </button>
-          {/* Recommended Movies */}
-          <input
-            type="text"
-            name="recommended"
-            value={movieData.recommended}
-            onChange={handleInputChange}
-            placeholder="Recommended Movie IDs (comma-separated)"
-            required
-            className="w-full md:col-span-2 p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
-          />
+
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full md:col-span-2 bg-indigo-600 text-white p-3 rounded-md hover:bg-indigo-500 transition duration-300 ease-in-out"

@@ -46,12 +46,14 @@ export default function RootLayout({
         <header className="fixed top-0 left-0 w-full p-5  z-50 ">
           <div className="container mx-auto flex justify-between items-center">
             <a href="/">
-              <h1 className="text-3xl font-bold text-white">Movie</h1>
+              {<img alt="Moviestreamtv" src="/logo.png" height={80} width={80} />}
+
+              {/* <h1 className="text-3xl font-bold text-white">Movie</h1> */}
             </a>
 
             <nav className={` absolute lg:static top-16 right-0 bg-black lg:bg-transparent w-full lg:w-auto`}>
               <ul className="flex flex-col lg:flex-row lg:space-x-6 space-y-6 lg:space-y-0 p-6 lg:p-0 text-center lg:text-left">
-                <li><a href="/list" className="text-white hover:text-gray-300">Gujarati Movies</a></li>
+                <li><a href="/add-movie/list" className="text-white hover:text-gray-300">Movies</a></li>
               </ul>
             </nav>
           </div>

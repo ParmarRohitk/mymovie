@@ -44,6 +44,14 @@ module.exports = {
     }));
 
     // Combine all paths (moviePaths, categoryPaths, languagePaths)
-    return [...moviePaths, ...categoryPaths, ...languagePaths];
+    const allPaths = [...moviePaths, ...categoryPaths, ...languagePaths];
+
+    // Filter out paths that should not be included in the sitemap
+    const filteredPaths = allPaths.filter((path) => {
+      const loc = path.loc.toLowerCase();
+      return !loc.startsWith("/api/") && !loc.startsWith("/add-movie/");
+    });
+
+    return filteredPaths;
   },
 };
