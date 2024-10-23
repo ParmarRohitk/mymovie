@@ -1,6 +1,8 @@
 "use client"
 import { useState, useEffect } from 'react';
 import Slider from '@/app/components/slider';  // Full-width slider for latest movies
+import Swiper from '@/app/components/swiper';
+import Link from 'next/link';
 
 interface SkeletonLoaderProps {
     width: number;
@@ -50,10 +52,14 @@ const Home = () => {
     // const latestMovies = movies.slice(0, 23);  // First 4 movies
     const topRatedMovies = movies.filter(movie => movie.rating > 8.0);
     const actionMovies = movies.filter(movie => movie.category.split(", ")[0] === 'action');
+    const comedyMovies = movies.filter(movie => movie.category.split(", ")[0] === 'comedy');
+    // const romanceMovies = movies.filter(movie => movie.category.split(", ")[0] === 'romance');
+    const gujaratiMovies = movies.filter(movie => movie.language.split(", ")[0] === 'Gujarati');
+    const hindiMovies = movies.filter(movie => movie.language.split(", ")[0] === 'Hindi');
 
     return (
         <>
-            <div className="mx-auto">
+            <div className="mx-auto pb-9">
                 {/* Full Page Hero Slider */}
                 <section className='mb-10'>
                     {/* {loading ? (
@@ -64,7 +70,7 @@ const Home = () => {
                 </section>
 
                 {/* New Movies */}
-                <section className="p-5">
+                <section className="p-5 mb-8">
                     <div className="p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg">
                         <h2 className="text-3xl font-semibold my-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-600 animate-pulse">
                             New Movies
@@ -106,16 +112,19 @@ const Home = () => {
 
 
                 {/* Top Rated Movies */}
-                <section className='p-5'>
+                {/*   <section className='mb-10 p-5'>
+                    <Swiper title="Top Rated Movies" slug="" movies={topRatedMovies} />
+                </section> */}
+                {<section className='p-5 mb-8'>
                     <div className='p-4 bg-gradient-to-b from-gray-500 to-gray-700 rounded-lg'>
                         <h2 className="text-3xl font-semibold my-4 text-white">Top Rated Movies</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                             {loading ? (
                                 Array(4).fill(0).map((_, index) => (
                                     <SkeletonLoader key={index} height={400} width={200} className="w-full" />
                                 ))
                             ) : (
-                                topRatedMovies.map((movie) => (
+                                topRatedMovies.slice(0, 5).map((movie) => (
                                     <a
                                         key={movie.slug}
                                         href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
@@ -139,10 +148,60 @@ const Home = () => {
                             )}
                         </div>
                     </div>
-                </section>
+                </section>}
+
+                <section className='p-5 mb-8'>
+                    <div className='p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg'>
+                        <Link
+                            href="/in/hindi"
+                            className='text-white hover:text-white text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-600 transition duration-300 ease-in-out hover:animate-pulse'
+                        >
+                            <h2 className="text-3xl font-semibold my-4">Hindi Movies</h2>
+                        </Link>
+
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                            {loading ? (
+                                Array(4).fill(0).map((_, index) => (
+                                    <SkeletonLoader key={index} width={200} height={300} className="full" />
+                                ))
+                            ) : (
+                                hindiMovies.slice(0, 6).map((movie) => (
+                                    <a
+                                        key={movie.slug}
+                                        href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
+                                        className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                                    >
+                                        <img
+                                            src={movie.image}
+                                            alt={movie.name}
+                                            className="w-full h-[auto] md:h-[300px] sm:h-[300px] lg:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
+                                        // className="w-full h-[350px] md:[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 text-center bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                            <h3 className="text-white mb-2 text-lg font-semibold translate-y-4 hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                                                {movie.name}
+                                            </h3>
+                                            <p className="text-white mt-2 text-center px-4 text-sm hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                                                {movie.description}
+                                            </p>
+                                        </div>
+                                        <div className="bg-stone-900 px-3 py-2 flex justify-between items-center">
+                                            <p className="text-white text-sm">{movie.rating} ⭐</p>
+                                            <p className="text-white text-sm">{movie.releaseDate}</p>
+                                        </div>
+                                    </a>
+                                ))
+                            )}
+                        </div>
+                    </div>
+                </section >
 
                 {/* Action Movies */}
-                <section className='p-5'>
+                <section className='mb-10 p-5'>
+                    <Swiper title="Action Movies" slug="/action" movies={actionMovies} />
+                </section>
+                {/* <section className='p-5 mb-8'>
                     <div className='p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg'>
                         <h2 className="text-3xl font-semibold my-4 text-white">Action Movies</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -180,7 +239,65 @@ const Home = () => {
                             )}
                         </div>
                     </div>
+                </section > */}
+
+                <section className='p-5 mb-8'>
+                    <div className='p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg'>
+                        <Link
+                            href="/in/gujarati"
+                            className='text-white hover:text-white text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-600 transition duration-300 ease-in-out hover:animate-pulse'
+                        >
+                            <h2 className="text-3xl font-semibold my-4">Gujarati Movies</h2>
+                        </Link>
+
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                            {loading ? (
+                                Array(4).fill(0).map((_, index) => (
+                                    <SkeletonLoader key={index} width={200} height={300} className="full" />
+                                ))
+                            ) : (
+                                gujaratiMovies.slice(0, 6).map((movie) => (
+                                    <a
+                                        key={movie.slug}
+                                        href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
+                                        className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                                    >
+                                        <img
+                                            src={movie.image}
+                                            alt={movie.name}
+                                            className="w-full h-[auto] md:h-[300px] sm:h-[300px] lg:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
+                                        // className="w-full h-[350px] md:[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 text-center bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                            <h3 className="text-white mb-2 text-lg font-semibold translate-y-4 hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                                                {movie.name}
+                                            </h3>
+                                            <p className="text-white mt-2 text-center px-4 text-sm hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                                                {movie.description}
+                                            </p>
+                                        </div>
+                                        <div className="bg-stone-900 px-3 py-2 flex justify-between items-center">
+                                            <p className="text-white text-sm">{movie.rating} ⭐</p>
+                                            <p className="text-white text-sm">{movie.releaseDate}</p>
+                                        </div>
+                                    </a>
+                                ))
+                            )}
+                        </div>
+                    </div>
                 </section >
+
+                <section className='mb-10 p-5'>
+                    <Swiper title="Comedy Movies" slug="/comedy" movies={comedyMovies} />
+                </section>
+
+                {/*  <section className='mb-10 p-5'>
+                    <Swiper title="Romantic Movies" slug="/romance" movies={romanceMovies} />
+                </section> */}
+
+
+
             </div >
         </>
     );

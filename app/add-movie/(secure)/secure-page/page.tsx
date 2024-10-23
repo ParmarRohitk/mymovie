@@ -4,7 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const AddMovieForm = () => {
+
   const router = useRouter();
+
   const [movieData, setMovieData] = useState({
     name: "",
     slug: "",
@@ -102,23 +104,43 @@ const AddMovieForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    try {
-      const newMovie = {
-        ...movieData,
-        rating: parseFloat(movieData.rating),
-        recommended: movieData.recommended.split(",").map((id) => parseInt(id.trim())), // Convert to array of numbers
-      };
+    const formData = new FormData();
 
+    // Append movie data to FormData
+    formData.append("name", movieData.name);
+    formData.append("slug", movieData.slug);
+    formData.append("category", movieData.category);
+    formData.append("rating", parseFloat(movieData.rating).toString());
+    formData.append("duration", movieData.duration);
+    formData.append("releaseDate", movieData.releaseDate);
+    formData.append("language", movieData.language);
+    formData.append("description", movieData.description);
+    formData.append("trailer", movieData.trailer);
+    formData.append("recommended", movieData.recommended);
+
+    // Append image file
+    if (imagePreview) {
+      const imageFile = await fetch(imagePreview).then(r => r.blob());
+      formData.append("image", imageFile, `${movieData.slug}.webp`);
+    }
+
+    // Append screenshots files
+    for (let i = 0; i < screenshotPreviews.length; i++) {
+      if (screenshotPreviews[i]) {
+        const screenshotFile = await fetch(screenshotPreviews[i]).then(r => r.blob());
+        formData.append("screenshots", screenshotFile, `${movieData.slug}_${i + 1}.webp`);
+      }
+    }
+
+    try {
       const response = await fetch("/api/addmovie", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newMovie),
+        body: formData,
       });
 
       if (response.ok) {
         setMessage("Movie added successfully!");
+        // Reset form
         setMovieData({
           name: "",
           slug: "",
@@ -148,16 +170,17 @@ const AddMovieForm = () => {
     }
   };
 
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 to-indigo-600 px-4 py-8">
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-3xl w-full">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-6xl w-full">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Add New Movie</h1>
         {message && (
           <div className={`mb-4 p-2 text-center text-white rounded-md ${message.includes("success") ? "bg-green-500" : "bg-red-500"}`}>
             {message}
           </div>
         )}
-        <form onSubmit={handleSubmit} className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} className="space-y-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           <input
             type="text"
             name="name"
@@ -219,7 +242,7 @@ const AddMovieForm = () => {
             onChange={handleInputChange}
             placeholder="Movie Description"
             required
-            className="w-full md:col-span-2 p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300 h-28 resize-none"
+            className="w-full md:col-span-3 p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300 h-28 resize-none"
           />
           <input
             type="text"
@@ -238,13 +261,13 @@ const AddMovieForm = () => {
             onChange={handleInputChange}
             accept=".webp"
             required
-            className="w-full p-2 border rounded-md text-black bg-gray-100 focus:outline-none"
+            className="w-full p-2 border rounded-md text-black bg-gray-100 focus:outline-none "
           />
           {imagePreview && <img src={imagePreview} alt="Poster Preview" className="w-48 h-72 object-cover border rounded-md" />}
 
           {/* Screenshots */}
           {movieData.screenshots.map((screenshot, index) => (
-            <div key={index} className="flex items-center space-x-2">
+            <div key={index} className="flex items-center space-x-2 md:col-span-1">
               <input
                 type="file"
                 name="screenshots"
@@ -263,6 +286,13 @@ const AddMovieForm = () => {
               </button>
             </div>
           ))}
+          <button
+            type="button"
+            onClick={addScreenshot}
+            className="w-full md:col-span-3 bg-blue-500 text-white p-2 rounded hover:bg-blue-400"
+          >
+            Add Screenshot
+          </button>
           <input
             type="text"
             name="recommended"
@@ -270,24 +300,18 @@ const AddMovieForm = () => {
             onChange={handleInputChange}
             placeholder="Recommended Movies (1,2,3,4)"
             required
-            className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300"
+            className="w-full p-2 border rounded-md text-black focus:outline-none focus:ring focus:ring-indigo-300 md:col-span-3"
           />
-          <button
-            type="button"
-            onClick={addScreenshot}
-            className="w-full md:col-span-2 bg-blue-500 text-white p-2 rounded hover:bg-blue-400"
-          >
-            Add Screenshot
-          </button>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full md:col-span-2 bg-indigo-600 text-white p-3 rounded-md hover:bg-indigo-500 transition duration-300 ease-in-out"
+            className="w-full md:col-span-3 bg-indigo-600 text-white p-3 rounded-md hover:bg-indigo-500 transition duration-300 ease-in-out"
           >
             Add Movie
           </button>
         </form>
+
       </div>
     </div>
   );

@@ -66,7 +66,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-        <main className="-p-4 pb-9">{children}</main>
+        <main className="-p-4 -pb-9">{children}</main>
         <Footer />
         <Script
           strategy="afterInteractive"

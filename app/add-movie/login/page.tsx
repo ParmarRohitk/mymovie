@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
@@ -12,8 +12,8 @@ const LoginPage = () => {
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
-        const validUsername = "admin";
-        const validPassword = "password123";
+        const validUsername = "addmovie";
+        const validPassword = "Umang$Rohit01";
 
         if (username === validUsername && password === validPassword) {
             localStorage.setItem('auth', 'true');
@@ -22,6 +22,14 @@ const LoginPage = () => {
             setError('Invalid username or password');
         }
     };
+
+    useEffect(() => {
+        const isAuthenticated = localStorage.getItem('auth');
+        if (isAuthenticated) {
+            // Redirect to secure page if already logged in
+            router.push('/add-movie/secure-page');
+        }
+    }, [router]);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-900">
@@ -35,7 +43,7 @@ const LoginPage = () => {
                             onChange={(e) => setUsername(e.target.value)}
                             placeholder="Username"
                             required
-                            className="w-full p-3 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            className="w-full p-3 text-lg text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                         />
                     </div>
                     <div className="relative">
@@ -45,7 +53,7 @@ const LoginPage = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Password"
                             required
-                            className="w-full p-3 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            className="w-full p-3 text-lg text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                         />
                     </div>
                     <button
@@ -58,7 +66,6 @@ const LoginPage = () => {
                 {error && <p className="text-red-500 text-center">{error}</p>}
             </div>
         </div>
-
     );
 };
 
