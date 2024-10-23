@@ -3,28 +3,28 @@ import { useState, useEffect } from 'react';
 import Slider from '@/app/components/slider';  // Full-width slider for latest movies
 import Swiper from '@/app/components/swiper';
 import Link from 'next/link';
-
+import { Movie } from './types';
 interface SkeletonLoaderProps {
     width: number;
     height: number;
     className: string;
 }
 
-interface Movie {
-    id: number;
-    slug: string;
-    name: string;
-    category: string;
-    rating: number;
-    duration: string;
-    releaseDate: string;
-    language: string;
-    description: string;
-    image: string;
-    trailer: string;
-    screenshots: string[];
-    recommended: number[];
-}
+// interface Movie {
+//     id: number;
+//     slug: string;
+//     name: string;
+//     category: string;
+//     rating: number;
+//     duration: string;
+//     releaseDate: string;
+//     language: string;
+//     description: string;
+//     image: string;
+//     trailer: string;
+//     screenshots: string[];
+//     recommended: number[];
+// }
 
 // Skeleton Loader CSS added in Tailwind config or global CSS
 const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({ width, height }) => (
@@ -38,7 +38,7 @@ const Home = () => {
     useEffect(() => {
         fetch('/api/movies')
             .then(response => response.json())
-            .then(data => {
+            .then((data: Movie[]) => {
                 setMovies(data);
                 setLoading(false);
             });

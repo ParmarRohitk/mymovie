@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
 interface Movie {
     id: number;
     name: string;
-    slugs: string;
+    slug: string;
     image: string;
     category: string;
     rating: number;
@@ -20,23 +20,23 @@ interface MovieScrollProps {
 const Swiper: React.FC<MovieScrollProps> = ({ title, movies, slug }) => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-    const handleScrollLeft = () => {
-        if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollBy({
-                left: -300,
-                behavior: "smooth",
-            });
-        }
-    };
-
-    const handleScrollRight = () => {
-        if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollBy({
-                left: 300,
-                behavior: "smooth",
-            });
-        }
-    };
+    /*  const handleScrollLeft = () => {
+         if (scrollContainerRef.current) {
+             scrollContainerRef.current.scrollBy({
+                 left: -300,
+                 behavior: "smooth",
+             });
+         }
+     };
+ 
+     const handleScrollRight = () => {
+         if (scrollContainerRef.current) {
+             scrollContainerRef.current.scrollBy({
+                 left: 300,
+                 behavior: "smooth",
+             });
+         }
+     }; */
 
     return (
         <div className="relative p-4 bg-gradient-to-b from-gray-500 to-gray-700 rounded-lg">
