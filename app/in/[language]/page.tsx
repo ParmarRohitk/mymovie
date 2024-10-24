@@ -41,7 +41,7 @@ const LanguagePage = ({ params }: { params: { language: string } }) => {
       });
   }, [language]);
 
-  const pageTitle = `${language} Movies - Find the Best ${language} Films`;
+  const pageTitle = `${language.toUpperCase()} Movies - Find the Best ${language.toUpperCase()} Films`;
   const pageDescription = `Discover the top ${language} movies, including popular releases and highly rated films. Watch your favorite ${language} films today!`;
 
 

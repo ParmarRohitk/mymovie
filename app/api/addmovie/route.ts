@@ -91,9 +91,10 @@ export async function POST(request: Request) {
 
     // Write updated movies back to JSON file
     fs.writeFileSync(filePath, JSON.stringify(movies, null, 2));
-
+ console.error("Movie added successfully");
     return NextResponse.json({ message: "Movie added successfully!" }, { status: 200 });
   } catch (error) {
+     console.error("Error adding movie:", error);
     return NextResponse.json({ error: "Failed to add movie. Please try again." }, { status: 500 });
   }
 }

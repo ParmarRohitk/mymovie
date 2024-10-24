@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+// import type { Metadata } from "n ext";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/Navbar";
@@ -16,39 +16,39 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Top Movie Streaming Platform - Watch Latest Movies",
-  description: "Discover and stream the latest movies, including action, drama, comedy, and more. Watch trailers and find your favorite films now.",
-  keywords: "movies, streaming, watch online, latest movies, HD movies, trailers, action, drama, comedy",
-  authors: [{ name: "Movie", url: "https://cinemaio.vercel.app" }],
-  openGraph: {
-    title: "Stream Latest Movies - Movie",
-    description: "Explore the best movies in various genres. Watch trailers, get movie details, and stream movies in HD.",
-    url: "https://cinemaio.vercel.app",
-    siteName: "Movie",
-    images: [
-      {
-        url: "https://cinemaio.vercel.app/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Movie Streaming Website",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Stream the Best Movies - Movie",
-    description: "Watch the latest movies and trailers. Your favorite films in action, comedy, and more are available here.",
-    images: ["https://cinemaio.vercel.app/twitter-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  // canonical: "https://cinemaio.vercel.app",
-};
+// export const metadata: Metadata = {
+//   title: "Top Movie Streaming Platform - Watch Latest Movies",
+//   description: "Discover and stream the latest movies, including action, drama, comedy, and more. Watch trailers and find your favorite films now.",
+//   keywords: "movies, streaming, watch online, latest movies, HD movies, trailers, action, drama, comedy",
+//   authors: [{ name: "Movie", url: "https://cinemaio.vercel.app" }],
+//   openGraph: {
+//     title: "Stream Latest Movies - Movie",
+//     description: "Explore the best movies in various genres. Watch trailers, get movie details, and stream movies in HD.",
+//     url: "https://cinemaio.vercel.app",
+//     siteName: "Movie",
+//     images: [
+//       {
+//         url: "https://cinemaio.vercel.app/og-image.jpg",
+//         width: 1200,
+//         height: 630,
+//         alt: "Movie Streaming Website",
+//       },
+//     ],
+//     locale: "en_US",
+//     type: "website",
+//   },
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "Stream the Best Movies - Movie",
+//     description: "Watch the latest movies and trailers. Your favorite films in action, comedy, and more are available here.",
+//     images: ["https://cinemaio.vercel.app/twitter-image.jpg"],
+//   },
+//   robots: {
+//     index: true,
+//     follow: true,
+//   },
+//   // canonical: "https://cinemaio.vercel.app",
+// };
 
 export default function RootLayout({
   children,
