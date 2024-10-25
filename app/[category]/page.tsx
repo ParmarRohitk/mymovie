@@ -63,46 +63,60 @@ const CategoryPage = ({ params }: { params: { category: string } }) => {
   }
 
   return (
-    <div className="pt-[100px] px-9 pt-[50px]">
-      {movies.length > 0 ? (
-        <>
-          <h1 className="pb-5 text-xl flex items-center justify-center">{category.toUpperCase()} Movies</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {movies.map((movie) => (
-              <Link
-                key={movie.slug}
-                href={`/${movie.category.split(", ")[0]}/${movie.slug}`} // Create dynamic link to movie page
-              >
-                <div className="movie-card cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-in-out relative shadow-lg hover:shadow-2xl rounded-lg overflow-hidden">
-                  {/* Movie Image */}
-                  <img
-                    src={movie.image}
-                    alt={movie.name}
-                    className="w-full h-auto object-cover"
-                  />
+    <>
+      {/*  <head>
+        <title>{movies}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content={`${language} movies, top ${language} films, best ${language} movies`} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={`https://moviestremtv.com/in/${language}`} />
+        <meta property="og:site_name" content="Moviestremtv" />
+        <link rel="canonical" href={`https://moviestremtv.com/in/${language}`} />
 
-                  {/* Movie Info */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-end">
-                    <h2 className="text-xl text-white font-bold">{movie.name}</h2>
-                    <div className="flex justify-between items-center mt-2 text-white">
-                      <h3 className="text-lg font-medium">{movie.category.split(", ")[0]}</h3>
-                      <p className="text-yellow-400">{movie.rating} ⭐</p>
-                      <p className="text-sm">{movie.duration}</p>
+      </head> */}
+
+      <div className="pt-[100px] px-9 pt-[50px]">
+        {movies.length > 0 ? (
+          <>
+            <h1 className="pb-5 text-xl flex items-center justify-center">{category.toUpperCase()} Movies</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {movies.map((movie) => (
+                <Link
+                  key={movie.slug}
+                  href={`/${movie.category.split(", ")[0]}/${movie.slug}`} // Create dynamic link to movie page
+                >
+                  <div className="movie-card cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-in-out relative shadow-lg hover:shadow-2xl rounded-lg overflow-hidden">
+                    {/* Movie Image */}
+                    <img
+                      src={movie.image}
+                      alt={movie.name}
+                      className="w-full h-auto object-cover"
+                    />
+
+                    {/* Movie Info */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-end">
+                      <h2 className="text-xl text-white font-bold">{movie.name}</h2>
+                      <div className="flex justify-between items-center mt-2 text-white">
+                        <h3 className="text-lg font-medium">{movie.category.split(", ")[0]}</h3>
+                        <p className="text-yellow-400">{movie.rating} ⭐</p>
+                        <p className="text-sm">{movie.duration}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="flex items-center justify-center min-h-screen">
+            <p className="text-4xl text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 animate-pulse">
+              No movies found for this category.
+            </p>
           </div>
-        </>
-      ) : (
-        <div className="flex items-center justify-center min-h-screen">
-          <p className="text-4xl text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 animate-pulse">
-            No movies found for this category.
-          </p>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
 
 
   );

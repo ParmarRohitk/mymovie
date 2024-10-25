@@ -72,10 +72,11 @@ const MovieDetailPage = () => {
             />
             <meta property="og:title" content={`Watch ${movieData.name} - ${movieData.category}`} />
             <meta property="og:description" content={movieData.description} />
-            <meta property="og:image" content={movieData.image} />
-            <meta property="og:type" content="video.movie" />
-            <meta property="og:url" content={`https://yourwebsite.com/movies/${movieData.slug}`} />
-            <meta property="og:site_name" content="Your Movie Site" />
+            <meta property="og:image" content={`https://moviestremtv.com${movieData.image}`} />
+            <meta property="og:type" content="image/webp" />
+            <meta property="og:url" content={`https://moviestremtv.com/${movieData.category}/${movieData.slug}`} />
+            <meta property="og:site_name" content="Moviestremtv" />
+            <link rel="canonical" href={`https://moviestremtv.com/${movieData.category}/${movieData.slug}`} />
 
             {/* Structured Data for SEO */}
             <script type="application/ld+json">
