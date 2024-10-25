@@ -949,29 +949,5 @@
       36,
       37
     ]
-  },
-  {
-    "name": "Vettaiyan",
-    "slug": "vettaiyan",
-    "category": "action",
-    "rating": 8.1,
-    "duration": "2h 43m",
-    "releaseDate": "10 Oct, 2024",
-    "language": "Hindi",
-    "description": "A highly sought-after supercop finds himself entangled in a series of unforeseen events surrounding a criminal case. As he grapples with justifying his actions, he must confront his moral compass while battling corrupt, larger-than-life forces. \\\"Vettaiyan\\\" delves into the dark side of crime investigations, showcasing one man's struggle against a world where justice is a scarce commodity.",
-    "image": "/images/vettaiyan.webp",
-    "trailer": "https://youtu.be/zPqMbwmGC1U?feature=shared",
-    "screenshots": [
-      "/images/vettaiyan_1.webp",
-      "/images/vettaiyan_2.webp",
-      "/images/vettaiyan_3.webp"
-    ],
-    "recommended": [
-      40,
-      39,
-      37,
-      36
-    ],
-    "id": 41
   }
 ]
