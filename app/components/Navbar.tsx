@@ -1,25 +1,40 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle menu
+    const [isVisible, setIsVisible] = useState(true); // State to control header visibility
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen); // Toggle the menu on click
     };
 
+    useEffect(() => {
+        let lastScrollY = window.scrollY;
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            setIsVisible(lastScrollY > currentScrollY || currentScrollY < 10); // Show header if scrolling up or at the top
+            lastScrollY = currentScrollY;
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <header className="fixed top-0 left-0 w-full p-5 z-50 bg-transparent">
+        <header className={`fixed top-0 left-0 w-full p-3 z-50 bg-transparent transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
             <div className="container mx-auto flex justify-between items-center">
 
                 {/* Logo with black background for white logo */}
                 <a href="/" className="bg-black rounded-full p-2">
-                    <div className=" flex items-center justify-center">
-                        {<img alt="Moviestreamtv" src="/logo.png" height={80} width={80} />}
-                        {/* <span className="ml-2 text-xl font-bold">Moviestreamtv</span> */}
+                    <div className="flex items-center justify-center">
+                        <img alt="Moviestreamtv" src="/logo.png" height={80} width={80} />
                     </div>
                 </a>
-
 
                 {/* Dropdown Navigation */}
                 <nav className={`absolute lg:static top-16 right-0 lg:right-auto bg-transparent w-full lg:w-auto ${isMenuOpen ? 'block' : 'hidden'}`}>
@@ -41,7 +56,6 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </nav>
-
 
                 {/* Hamburger Menu Icon */}
                 <div>

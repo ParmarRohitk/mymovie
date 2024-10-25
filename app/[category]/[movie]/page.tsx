@@ -79,7 +79,7 @@ const MovieDetailPage = () => {
             <link rel="canonical" href={`https://moviestremtv.com/${movieData.category}/${movieData.slug}`} />
 
             {/* Structured Data for SEO */}
-            <script type="application/ld+json">
+            {/*   <script type="application/ld+json">
               {JSON.stringify({
                 "@context": "http://schema.org",
                 "@type": "Movie",
@@ -101,7 +101,7 @@ const MovieDetailPage = () => {
                   thumbnailUrl: movieData.image,
                 },
               })}
-            </script>
+            </script> */}
           </>
         )}
       </head>
