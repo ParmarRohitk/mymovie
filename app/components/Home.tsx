@@ -59,9 +59,9 @@ const Home = () => {
 
     return (
         <>
-            <div className="mx-auto pb-9">
+            <div className="mx-auto -pb-9">
                 {/* Full Page Hero Slider */}
-                <section className='mb-10'>
+                <section className='mb-20'>
                     {/* {loading ? (
                     <SkeletonLoader width="full" height="400px" />
                 ) : ( */}
@@ -70,7 +70,7 @@ const Home = () => {
                 </section>
 
                 {/* New Movies */}
-                <section className="p-5 mb-8">
+                <section className="p-5 mb-20">
                     <div className="p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg">
                         <h2 className="text-3xl font-semibold my-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-600 animate-pulse">
                             New Movies
@@ -115,7 +115,7 @@ const Home = () => {
                 {/*   <section className='mb-10 p-5'>
                     <Swiper title="Top Rated Movies" slug="" movies={topRatedMovies} />
                 </section> */}
-                {<section className='p-5 mb-8'>
+                {<section className='p-5 mb-20'>
                     <div className='p-4 bg-gradient-to-b from-gray-500 to-gray-700 rounded-lg'>
                         <h2 className="text-3xl font-semibold my-4 text-white">Top Rated Movies</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -150,7 +150,7 @@ const Home = () => {
                     </div>
                 </section>}
 
-                <section className='p-5 mb-8'>
+                <section className='p-5 mb-20'>
                     <div className='p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg'>
                         <Link
                             href="/in/hindi"
@@ -198,7 +198,7 @@ const Home = () => {
                 </section >
 
                 {/* Action Movies */}
-                <section className='mb-10 p-5'>
+                <section className='mb-20 p-5'>
                     <Swiper title="Action Movies" slug="/action" movies={actionMovies} />
                 </section>
                 {/* <section className='p-5 mb-8'>
@@ -241,7 +241,7 @@ const Home = () => {
                     </div>
                 </section > */}
 
-                <section className='p-5 mb-8'>
+                <section className='p-5 mb-20'>
                     <div className='p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg'>
                         <Link
                             href="/in/gujarati"
@@ -288,7 +288,7 @@ const Home = () => {
                     </div>
                 </section >
 
-                <section className='mb-10 p-5'>
+                <section className='mb-20 p-5'>
                     <Swiper title="Comedy Movies" slug="/comedy" movies={comedyMovies} />
                 </section>
 

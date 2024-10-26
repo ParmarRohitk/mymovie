@@ -106,7 +106,7 @@ const MovieDetailPage = () => {
         )}
       </head>
 
-      <div className="movie-detail-page pt-12 px-5 sm:px-9">
+      <div className="movie-detail-page pt-12 pb-20 px-5 sm:px-9">
         {movieData ? (
           <div className="max-w-screen-lg mx-auto">
             {/* Movie Title */}
@@ -114,7 +114,7 @@ const MovieDetailPage = () => {
 
             {/* Embedding YouTube Trailer */}
             {movieData.trailer && (
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center mb-10">
                 <iframe
                   width="100%"
                   height="315"
@@ -129,7 +129,7 @@ const MovieDetailPage = () => {
             )}
 
             {/* Movie Info */}
-            <div className="flex flex-wrap justify-center text-lg text-gray-600 space-x-6 mb-6">
+            <div className="flex flex-wrap justify-center text-lg text-gray-600 space-x-6 mb-20">
               {/* Category */}
               <div className="flex items-center space-x-1">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -196,9 +196,9 @@ const MovieDetailPage = () => {
 
             {/* Recommended Movies */}
             {recommendedMovies.length > 0 && (
-              <div className="mt-10">
-                <h2 className="text-3xl font-semibold mb-6 text-center">You May Also Like</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="mt-20">
+                <h2 className="text-3xl font-semibold mb-9 text-center">You May Also Like</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 mt-5">
                   {recommendedMovies.map((recMovie) => (
                     <a
                       key={recMovie.slug}
