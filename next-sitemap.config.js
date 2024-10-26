@@ -9,7 +9,7 @@ const movies = JSON.parse(
 );
 
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://cinemaio.vercel.app/",
+  siteUrl: process.env.SITE_URL || "https://moviestremtv.com",
   generateRobotsTxt: true,
   changefreq: "daily",
   priority: 0.7,
