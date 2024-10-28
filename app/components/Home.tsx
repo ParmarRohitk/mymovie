@@ -44,7 +44,7 @@ const Home = () => {
             });
     }, []);
 
-    const movieIdsToShow = [4, 5, 22, 20]; // Specify the IDs of the movies you want to show
+    const movieIdsToShow = [25, 41, 4, 5]; // Specify the IDs of the movies you want to show
 
     const latestMovies = movies.filter((movie) => movieIdsToShow.includes(movie.id));
 

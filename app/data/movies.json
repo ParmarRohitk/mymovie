@@ -934,10 +934,10 @@
     "rating": 7.2,
     "duration": "130 minutes",
     "releaseDate": "November 3, 2023",
-    "language": "Hindi",
+    "language": "hindi",
     "description": "A sequel that takes the horror-comedy to new levels with unexpected twists and laughter.",
     "image": "/images/bhool-bhulaiyaa-3.webp",
-    "trailer": "https://youtu.be/3idiots_trailer",
+    "trailer": "https://youtu.be/6YMY62tMLUA?si=rWJpnXQzrQTPv8iZ",
     "screenshots": [
       "/images/bhool-bhulaiyaa-3_1.webp",
       "/images/bhool-bhulaiyaa-3_2.webp",
@@ -948,6 +948,30 @@
       35,
       36,
       37
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Venom The Last Dance",
+    "slug": "venom-the-last-dance",
+    "category": "action",
+    "rating": 6.2,
+    "duration": "1h 50m",
+    "releaseDate": "24 Oct, 2024",
+    "language": "english",
+    "description": "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie`s last dance.",
+    "image": "/images/venom-the-last-dance.webp",
+    "trailer": "htthttps://youtu.be/HyIyd9joTTc?si=SZxmkxHDke-waBaO",
+    "screenshots": [
+      "/images/venom-the-last-dance_1.webp",
+      "/images/venom-the-last-dance_2.webp",
+      "/images/venom-the-last-dance_3.webp"
+    ],
+    "recommended": [
+      24,
+      25,
+      26,
+      27
     ]
   }
 ]
