@@ -7,7 +7,7 @@ const Footer = () => {
                 {/* Left Side: Footer Text */}
                 <div className="mb-4 md:mb-0 text-center md:text-left">
                     <p className="text-sm sm:text-base">
-                        © 2024 <span className="font-semibold">Moviestreamtv</span> | All Rights Reserved
+                        © 2024 <span className="font-semibold"><a href="/" >Moviestreamtv</a></span> | All Rights Reserved
                     </p>
                 </div>
 

@@ -73,7 +73,9 @@ const Home = () => {
                 <section className="p-5 mb-20">
                     <div className="p-4 bg-gradient-to-b from-pink-500 to-yellow-700 rounded-lg">
                         <h2 className="text-3xl font-semibold my-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-600 animate-pulse">
-                            New Movies
+                            <Link href="/new-movies">
+                                New Movies
+                            </Link>
                         </h2>
                         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"> {/* Responsive grid layout */}
                             {loading ? (
@@ -117,7 +119,11 @@ const Home = () => {
                 </section> */}
                 {<section className='p-5 mb-20'>
                     <div className='p-4 bg-gradient-to-b from-gray-500 to-gray-700 rounded-lg'>
-                        <h2 className="text-3xl font-semibold my-4 text-white">Top Rated Movies</h2>
+                        <h2 className="text-3xl font-semibold my-4 text-white">
+                            <Link href="/top-rated-movies">
+                                Top Rated Movies
+                            </Link>
+                        </h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                             {loading ? (
                                 Array(4).fill(0).map((_, index) => (
