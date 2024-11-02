@@ -44,9 +44,13 @@ const Home = () => {
             });
     }, []);
 
-    const movieIdsToShow = [25, 41, 4, 5]; // Specify the IDs of the movies you want to show
+    // const movieIdsToShow = [46, 25, 41, 4, 5, 43]; // Specify the IDs of the movies you want to show
 
-    const latestMovies = movies.filter((movie) => movieIdsToShow.includes(movie.id));
+    // const latestMovies = movies.filter((movie) => movieIdsToShow.includes(movie.id));
+    const latestMovies = movies
+        .filter(movie => [46, 25, 4, 5, 43].includes(movie.id))
+        .reverse();
+
 
 
     // const latestMovies = movies.slice(0, 23);  // First 4 movies

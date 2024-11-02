@@ -973,5 +973,124 @@
       26,
       27
     ]
+  },
+  {
+    "id": 42,
+    "name": "Pani",
+    "slug": "pani",
+    "category": "action",
+    "rating": 6.8,
+    "duration": "2h 23m",
+    "releaseDate": "24 Oct, 2024",
+    "language": "malayalam",
+    "description": "The peaceful married life is unexpectedly disrupted by two youngsters with criminal inclinations which leads them to become a part of the vengeance against the mobs of Thrissur.",
+    "trailer": "https://youtu.be/TmpzntdJqm4?si=KGQdxF2GlWM5b6p3",
+    "recommended": [
+      1,
+      11,
+      21,
+      3
+    ],
+    "image": "/images/pani.webp",
+    "screenshots": [
+      "/images/pani_1.webp",
+      "/images/pani_2.webp"
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Singham Again",
+    "slug": "singham-again",
+    "category": "action",
+    "rating": 7,
+    "duration": "2h 24m",
+    "releaseDate": "1 Nov, 2024",
+    "language": "hindi",
+    "description": "In the third installment of Singham series, the valiant cop Bajirao Singham and his team of brave hearts embark on a cross-border mission to rescue his beloved wife, Avni Singham, who has been abducted by a formidable antagonist. ",
+    "trailer": "https://youtu.be/MD7v0-igVIM?si=WnT4pwr6LEmSy4T9",
+    "recommended": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "image": "/images/singham-again.webp",
+    "screenshots": [
+      "/images/singham-again_1.webp",
+      "/images/singham-again_2.webp",
+      "/images/singham-again_3.webp"
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Lucky Baskhar",
+    "slug": "lucky-baskhar",
+    "category": "crime",
+    "rating": 9.4,
+    "duration": "2h 30m",
+    "releaseDate": "31 Oct, 2024",
+    "language": "hindi",
+    "description": "Gear up to witness the extra -ordinary tale of Lucky Bhaskar.",
+    "trailer": "https://youtu.be/w8EDX5KqFLg?si=G36_tKoGB0qRbCZ0",
+    "recommended": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "image": "/images/lucky-baskhar.webp",
+    "screenshots": [
+      "/images/lucky-baskhar_1.webp",
+      "/images/lucky-baskhar_2.webp",
+      "/images/lucky-baskhar_3.webp"
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Brother",
+    "slug": "brother",
+    "category": "comedy",
+    "rating": 7.2,
+    "duration": "2h 21m",
+    "releaseDate": "31 Oct, 2024",
+    "language": "tamil",
+    "description": "Get ready for a family entertainer packed with emotions, action, and heartwarming moments.",
+    "trailer": "https://youtu.be/rmonLZ1kElw?si=GLRg7CuvP1bFLV_W",
+    "recommended": [
+      1,
+      2,
+      33,
+      4
+    ],
+    "image": "/images/brother.webp",
+    "screenshots": [
+      "/images/brother_1.webp",
+      "/images/brother_2.webp",
+      "/images/brother_3.webp"
+    ]
+  },
+  {
+    "id": 46,
+    "name": "The Wild Robot",
+    "slug": "the-wild-robot",
+    "category": "animation",
+    "rating": 9.4,
+    "duration": "1h 41m",
+    "releaseDate": "18 Oct, 2024",
+    "language": "english",
+    "description": "Shipwrecked on a deserted island, a robot named Roz must learn to adapt to its new surroundings. Building relationships with the native animals, Roz soon develops a parental bond with an orphaned gosling.",
+    "trailer": "https://youtu.be/67vbA5ZJdKQ?si=jir047opooIyKp6w",
+    "recommended": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "image": "/images/the-wild-robot.webp",
+    "screenshots": [
+      "/images/the-wild-robot_1.webp",
+      "/images/the-wild-robot_2.webp",
+      "/images/the-wild-robot_3.webp"
+    ]
   }
 ]
