@@ -81,7 +81,7 @@ const Home = () => {
                                 New Movies
                             </Link>
                         </h2>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"> {/* Responsive grid layout */}
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                             {loading ? (
                                 Array(6)
                                     .fill(0)
@@ -89,32 +89,37 @@ const Home = () => {
                                         <SkeletonLoader key={index} width={200} height={300} className="" />
                                     ))
                             ) : (
-                                movies.slice(4, 10).map((movie) => (
-                                    <div
-                                        key={movie.slug}
-                                        className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
-                                    >
-                                        <a
-                                            href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
-                                            className="block relative"
+                                // Sort movies by releaseDate and slice to get the latest 6
+                                movies
+                                    .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
+                                    .slice(0, 6) // Get only the first 6 movies
+                                    .map((movie) => (
+                                        <div
+                                            key={movie.slug}
+                                            className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
                                         >
-                                            <img
-                                                src={movie.image}
-                                                alt={movie.name}
-                                                className="w-full h-[250px] sm:h-[220px] md:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110"
-                                            />
-                                            <div className="absolute inset-0 bg-black bg-opacity-60 rounded-lg flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <p className="text-white text-center text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                                    {movie.name}
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                ))
+                                            <a
+                                                href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
+                                                className="block relative"
+                                            >
+                                                <img
+                                                    src={movie.image}
+                                                    alt={movie.name}
+                                                    className="w-full h-[250px] sm:h-[220px] md:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-110"
+                                                />
+                                                <div className="absolute inset-0 bg-black bg-opacity-60 rounded-lg flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    <p className="text-white text-center text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                                        {movie.name}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    ))
                             )}
                         </div>
                     </div>
                 </section>
+
 
 
 
@@ -135,27 +140,29 @@ const Home = () => {
                                     <SkeletonLoader key={index} height={300} width={200} className="w-full" />
                                 ))
                             ) : (
-                                topRatedMovies.slice(0, 6).map((movie) => (
-                                    <a
-                                        key={movie.slug}
-                                        href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
-                                        className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
-                                    >
-                                        <img
-                                            src={movie.image}
-                                            alt={movie.name}
-                                            className="w-full h-[auto] sm:h-[300px] md:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-105"
-                                        />
-                                        <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <h3 className="text-white text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                                                {movie.name}
-                                            </h3>
-                                            <p className="text-white text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-in-out mt-2">
-                                                {movie.rating} ⭐
-                                            </p>
-                                        </div>
-                                    </a>
-                                ))
+                                topRatedMovies
+                                    .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
+                                    .slice(0, 6).map((movie) => (
+                                        <a
+                                            key={movie.slug}
+                                            href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
+                                            className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                                        >
+                                            <img
+                                                src={movie.image}
+                                                alt={movie.name}
+                                                className="w-full h-[auto] sm:h-[300px] md:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform group-hover:scale-105"
+                                            />
+                                            <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <h3 className="text-white text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                                                    {movie.name}
+                                                </h3>
+                                                <p className="text-white text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-in-out mt-2">
+                                                    {movie.rating} ⭐
+                                                </p>
+                                            </div>
+                                        </a>
+                                    ))
                             )}
                         </div>
                     </div>
@@ -179,33 +186,35 @@ const Home = () => {
                                     <SkeletonLoader key={index} width={200} height={300} className="w-full" />
                                 ))
                             ) : (
-                                hindiMovies.slice(0, 6).map((movie) => (
-                                    <a
-                                        key={movie.slug}
-                                        href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
-                                        className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
-                                    >
-                                        <img
-                                            src={movie.image}
-                                            alt={movie.name}
-                                            className="w-full h-[250px] sm:h-[300px] md:h-[300px] lg:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
-                                        />
+                                hindiMovies
+                                    .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
+                                    .slice(0, 6).map((movie) => (
+                                        <a
+                                            key={movie.slug}
+                                            href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
+                                            className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                                        >
+                                            <img
+                                                src={movie.image}
+                                                alt={movie.name}
+                                                className="w-full h-[250px] sm:h-[300px] md:h-[300px] lg:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
+                                            />
 
-                                        <div className="absolute inset-0 text-center bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                                            <h3 className="text-white mb-2 text-lg font-semibold translate-y-4 hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                                                {movie.name}
-                                            </h3>
-                                            <p className="text-white mt-2 text-center px-4 text-sm">
-                                                {movie.description}
-                                            </p>
-                                        </div>
+                                            <div className="absolute inset-0 text-center bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                                <h3 className="text-white mb-2 text-lg font-semibold translate-y-4 hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                                                    {movie.name}
+                                                </h3>
+                                                <p className="text-white mt-2 text-center px-4 text-sm">
+                                                    {movie.description}
+                                                </p>
+                                            </div>
 
-                                        <div className="bg-stone-900 px-3 py-2 flex justify-between items-center text-white text-sm">
-                                            <p>{movie.rating} ⭐</p>
-                                            <p>{movie.releaseDate}</p>
-                                        </div>
-                                    </a>
-                                ))
+                                            <div className="bg-stone-900 px-3 py-2 flex justify-between items-center text-white text-sm">
+                                                <p>{movie.rating} ⭐</p>
+                                                <p>{movie.releaseDate}</p>
+                                            </div>
+                                        </a>
+                                    ))
                             )}
                         </div>
                     </div>
@@ -262,7 +271,7 @@ const Home = () => {
                             href="/in/gujarati"
                             className="text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-600 text-3xl font-semibold my-4 transition duration-300 ease-in-out hover:animate-pulse"
                         >
-                            <h2 className="text-3xl font-semibold my-4 text-white hover:text-pink-600">
+                            <h2 className="text-3xl font-semibold my-4 text-white ">
                                 Gujarati Movies
                             </h2>
                         </Link>
@@ -273,33 +282,35 @@ const Home = () => {
                                     <SkeletonLoader key={index} width={200} height={300} className="w-full" />
                                 ))
                             ) : (
-                                gujaratiMovies.slice(0, 6).map((movie) => (
-                                    <a
-                                        key={movie.slug}
-                                        href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
-                                        className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
-                                    >
-                                        <img
-                                            src={movie.image}
-                                            alt={movie.name}
-                                            className="w-full h-[250px] sm:h-[300px] md:h-[300px] lg:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
-                                        />
+                                gujaratiMovies
+                                    .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
+                                    .slice(0, 6).map((movie) => (
+                                        <a
+                                            key={movie.slug}
+                                            href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
+                                            className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                                        >
+                                            <img
+                                                src={movie.image}
+                                                alt={movie.name}
+                                                className="w-full h-[250px] sm:h-[300px] md:h-[300px] lg:h-[300px] object-cover rounded-lg transition-transform duration-500 ease-in-out transform hover:scale-105"
+                                            />
 
-                                        <div className="absolute inset-0 text-center bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                                            <h3 className="text-white mb-2 text-lg font-semibold translate-y-4 hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                                                {movie.name}
-                                            </h3>
-                                            <p className="text-white mt-2 text-center px-4 text-sm">
-                                                {movie.description}
-                                            </p>
-                                        </div>
+                                            <div className="absolute inset-0 text-center bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                                <h3 className="text-white mb-2 text-lg font-semibold translate-y-4 hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                                                    {movie.name}
+                                                </h3>
+                                                <p className="text-white mt-2 text-center px-4 text-sm">
+                                                    {movie.description}
+                                                </p>
+                                            </div>
 
-                                        <div className="bg-stone-900 px-3 py-2 flex justify-between items-center text-white text-sm">
-                                            <p>{movie.rating} ⭐</p>
-                                            <p>{movie.releaseDate}</p>
-                                        </div>
-                                    </a>
-                                ))
+                                            <div className="bg-stone-900 px-3 py-2 flex justify-between items-center text-white text-sm">
+                                                <p>{movie.rating} ⭐</p>
+                                                <p>{movie.releaseDate}</p>
+                                            </div>
+                                        </a>
+                                    ))
                             )}
                         </div>
                     </div>

@@ -1092,5 +1092,123 @@
       "/images/the-wild-robot_2.webp",
       "/images/the-wild-robot_3.webp"
     ]
+  },
+  {
+    "id": 47,
+    "name": "Hahacar",
+    "slug": "hahacar",
+    "category": "comedy",
+    "rating": 7.8,
+    "duration": "2h 15m",
+    "releaseDate": "18 Oct, 2024",
+    "language": "gujarati",
+    "description": "Hahacar revolves around Hitu, Pariyo and Bhailu and their experiments with robbery. Will these first timers robbers succeed like in Money Heist or will they fail monumentally?",
+    "trailer": "https://youtu.be/U8fAXvA7YFo?si=cO1WkksfC9ViOWMA",
+    "recommended": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "image": "/images/hahacar.webp",
+    "screenshots": [
+      "/images/hahacar_1.webp"
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Bagheera",
+    "slug": "bagheera",
+    "category": "action",
+    "rating": 9.2,
+    "duration": "2h 38m",
+    "releaseDate": "31 Oct, 2024",
+    "language": "hindi",
+    "description": "The countdown to justice begins.",
+    "trailer": "https://youtu.be/RTejKevGciA?si=mlKwzS56fCFKtoNY",
+    "recommended": [
+      1,
+      2,
+      3,
+      4,
+      null
+    ],
+    "image": "/images/bagheera.webp",
+    "screenshots": [
+      "/images/bagheera_1.webp",
+      "/images/bagheera_2.webp"
+    ]
+  },
+  {
+    "id": 49,
+    "name": "Amaran",
+    "slug": "amaran",
+    "category": "action",
+    "rating": 9.4,
+    "duration": "2h 49m",
+    "releaseDate": "31 Oct, 2024",
+    "language": "hindi",
+    "description": "Amaran is a true-life story of Major Mukund Varadarajan (Sivakarthikeyan), a commissioned officer in the Indian Army`s Rajput Regiment, who was posthumously awarded the Ashok Chakra for his valor during a counterterrorism operation while on deputation to the 44th Rashtriya Rifles battalion in Jammu and Kashmir.\r\n\r\nBesides being a tale of courage, it portrays the selfless love of his wife, Indhu Rebecaa Varghese (Sai Pallavi). The supporting cast includes Bhuvan Arora, Rahul Bose, and Rohman Shawl, all contributing to this real-life story that deserves to be told and shared in the annals of history. From the well-known house of Raaj Kamal Films International and Sony Pictures Films India, Director Rajkumar Periasamy has deftly woven the threads of this story with reality, allowing the audience to relate to the daily trials and tribulations our brave soldiers face, which many of us tend to take for granted.\r\n\r\nIt`s time to stand and salute these brave warriors of our frontiers! The film is produced by Kamal Haasan, Sony Pictures International Productions, and R. Mahendran.",
+    "trailer": "https://youtu.be/molA7xjD_nQ?si=q_YHjcaouyCdTaDW",
+    "recommended": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "image": "/images/amaran.webp",
+    "screenshots": [
+      "/images/amaran_1.webp",
+      "/images/amaran_2.webp",
+      "/images/amaran_3.webp"
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Subservience",
+    "slug": "subservience",
+    "category": "sci-fi",
+    "rating": 5.2,
+    "duration": "1h 46m",
+    "releaseDate": "15 August 2024",
+    "language": "english",
+    "description": "Follows a struggling father who purchases a domestic SIM to help care for his house and family, unaware she will gain awareness and turn deadly.",
+    "trailer": "https://youtu.be/VoEdO6_G6lc?si=FV4AykmJyCQsWKsv",
+    "recommended": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "image": "/images/subservience.webp",
+    "screenshots": [
+      "/images/subservience_1.webp",
+      "/images/subservience_2.webp",
+      "/images/subservience_3.webp"
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Bagman",
+    "slug": "bagman",
+    "category": "horror",
+    "rating": 4.6,
+    "duration": "1h 33m",
+    "releaseDate": "20 September 2024",
+    "language": "english",
+    "description": "When a sinister threat from his childhood returns to haunt him, a father desperately struggles against his deepest inner fear. Only this time, the fight isn't for himself; it's for his family.",
+    "trailer": "https://youtu.be/slrzCgYIUPM?si=45gMO3x-Vr86sie6",
+    "recommended": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "image": "/images/bagman.webp",
+    "screenshots": [
+      "/images/bagman_1.webp",
+      "/images/bagman_2.webp",
+      "/images/bagman_3.webp"
+    ]
   }
 ]

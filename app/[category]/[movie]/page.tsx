@@ -129,47 +129,55 @@ const MovieDetailPage = () => {
             )}
 
             {/* Movie Info */}
-            <div className="flex flex-wrap justify-center text-lg text-gray-600 space-x-6 mb-20">
-              {/* Category */}
-              <div className="flex items-center space-x-1">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M5 3a2 2 0 0 0-2 2v1h14V5a2 2 0 0 0-2-2H5zM3 8h14v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" />
-                </svg>
-                <p><span className="font-semibold text-gray-700">Category:</span> {movieData.category}</p>
+            <div className="mb-20">
+              {/* First Row: 3 Columns */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                {/* Category */}
+                <div className="flex items-center space-x-1">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5 3a2 2 0 0 0-2 2v1h14V5a2 2 0 0 0-2-2H5zM3 8h14v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" />
+                  </svg>
+                  <p><span className="font-semibold text-gray-700">Category:</span> {movieData.category}</p>
+                </div>
+
+                {/* Rating */}
+                <div className="flex items-center space-x-1">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.462 4.5h4.743c.97 0 1.371 1.24.588 1.81l-3.83 2.764 1.463 4.5c.3.921-.755 1.688-1.538 1.122L10 13.011l-3.837 2.612c-.783.566-1.838-.201-1.538-1.122l1.462-4.5-3.83-2.764c-.782-.57-.382-1.81.588-1.81h4.743l1.462-4.5z" />
+                  </svg>
+                  <p>{movieData.rating} ⭐</p>
+                </div>
+
+                {/* Duration */}
+                <div className="flex items-center space-x-1">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-7.586V6a1 1 0 10-2 0v5a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414l-2.707-2.707z" clipRule="evenodd" />
+                  </svg>
+                  <p><span className="font-semibold text-gray-700">Duration:</span> {movieData.duration}</p>
+                </div>
               </div>
 
-              {/* Rating */}
-              <div className="flex items-center space-x-1">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.462 4.5h4.743c.97 0 1.371 1.24.588 1.81l-3.83 2.764 1.463 4.5c.3.921-.755 1.688-1.538 1.122L10 13.011l-3.837 2.612c-.783.566-1.838-.201-1.538-1.122l1.462-4.5-3.83-2.764c-.782-.57-.382-1.81.588-1.81h4.743l1.462-4.5z" />
-                </svg>
-                <p>{movieData.rating} ⭐</p>
-              </div>
+              {/* Second Row: 2 Columns */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Release Date */}
+                <div className="flex items-center space-x-1">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H3a1 1 0 00-1 1v11a2 2 0 002 2h12a2 2 0 002-2V5a1 1 0 00-1-1h-2V3a1 1 0 00-2 0v1H7V3a1 1 0 00-1-1zM4 7v9a1 1 0 001 1h10a1 1 0 001-1V7H4z" clipRule="evenodd" />
+                  </svg>
+                  <p><span className="font-semibold text-gray-700">Release Date:</span> {movieData.releaseDate}</p>
+                </div>
 
-              {/* Duration */}
-              <div className="flex items-center space-x-1">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-7.586V6a1 1 0 10-2 0v5a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414l-2.707-2.707z" clipRule="evenodd" />
-                </svg>
-                <p><span className="font-semibold text-gray-700">Duration:</span> {movieData.duration}</p>
-              </div>
-
-              {/* Release Date */}
-              <div className="flex items-center space-x-1">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H3a1 1 0 00-1 1v11a2 2 0 002 2h12a2 2 0 002-2V5a1 1 0 00-1-1h-2V3a1 1 0 00-2 0v1H7V3a1 1 0 00-1-1zM4 7v9a1 1 0 001 1h10a1 1 0 001-1V7H4z" clipRule="evenodd" />
-                </svg>
-                <p><span className="font-semibold text-gray-700">Release Date:</span> {movieData.releaseDate}</p>
-              </div>
-
-              {/* Language */}
-              <div className="flex items-center space-x-1">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-6.293-7H9v5.986A6.005 6.005 0 013.707 11zM9 4.014V10H3.707A6.005 6.005 0 019 4.014zM11 4.014A6.005 6.005 0 0116.293 10H11V4.014zM16.293 11H11v5.986A6.005 6.005 0 0116.293 11z" clipRule="evenodd" />
-                </svg>
-                <p><span className="font-semibold text-gray-700">Language:</span> {movieData.language}</p>
+                {/* Language */}
+                <div className="flex items-center space-x-1">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-6.293-7H9v5.986A6.005 6.005 0 013.707 11zM9 4.014V10H3.707A6.005 6.005 0 019 4.014zM11 4.014A6.005 6.005 0 0116.293 10H11V4.014zM16.293 11H11v5.986A6.005 6.005 0 0116.293 11z" clipRule="evenodd" />
+                  </svg>
+                  <p><span className="font-semibold text-gray-700">Language:</span> {movieData.language}</p>
+                </div>
               </div>
             </div>
+
+
 
             {/* Movie Description */}
             <div className="mb-10">
@@ -198,7 +206,7 @@ const MovieDetailPage = () => {
             {recommendedMovies.length > 0 && (
               <div className="mt-20">
                 <h2 className="text-3xl font-semibold mb-9 text-center">You May Also Like</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 mt-5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 mt-5">
                   {recommendedMovies.map((recMovie) => (
                     <a
                       key={recMovie.slug}
@@ -219,6 +227,7 @@ const MovieDetailPage = () => {
                 </div>
               </div>
             )}
+
           </div>
         ) : (
           <div className="flex justify-center items-center min-h-screen">

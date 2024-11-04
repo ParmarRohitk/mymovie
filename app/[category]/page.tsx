@@ -91,8 +91,9 @@ const CategoryPage = ({ params }: { params: { category: string } }) => {
                     <img
                       src={movie.image}
                       alt={movie.name}
-                      className="w-full h-auto object-cover"
+                      className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg object-cover"
                     />
+
 
                     {/* Movie Info */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-end">

@@ -17,11 +17,10 @@ interface Movie {
 const LanguagePage = ({ params }: { params: { language: string } }) => {
   const { language } = params;
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(false); // Error state
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    // Fetch movies from the API
     fetch("/api/movies")
       .then((response) => response.json())
       .then((data: Movie[]) => {
@@ -31,28 +30,30 @@ const LanguagePage = ({ params }: { params: { language: string } }) => {
           )
         );
 
-        setMovies(filteredMovies);
-        setLoading(false); // Stop loading
+        // Sort movies by releaseDate (assuming releaseDate is in YYYY-MM-DD format)
+        const sortedMovies = filteredMovies.sort((a, b) => {
+          return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
+        });
+
+        setMovies(sortedMovies);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
-        setError(true); // Set error state
-        setLoading(false); // Stop loading
+        setError(true);
+        setLoading(false);
       });
   }, [language]);
 
   const pageTitle = `${language.toUpperCase()} Movies - Find the Best ${language.toUpperCase()} Films`;
   const pageDescription = `Discover the top ${language} movies, including popular releases and highly rated films. Watch your favorite ${language} films today!`;
 
-
   if (loading) {
     return (
       <div className="pt-[100px] px-9">
-        {/* <h1 className="pb-5 text-xl">Loading movies...</h1> */}
-        {/* Example skeleton loader */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {[...Array(8)].map((_, index) => (
-            <div key={index} className="bg-gray-300 animate-pulse h-[300px]  rounded-lg"></div>
+            <div key={index} className="bg-gray-300 animate-pulse h-[300px] rounded-lg"></div>
           ))}
         </div>
       </div>
@@ -69,7 +70,6 @@ const LanguagePage = ({ params }: { params: { language: string } }) => {
 
   return (
     <>
-
       <head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
@@ -79,7 +79,6 @@ const LanguagePage = ({ params }: { params: { language: string } }) => {
         <meta property="og:url" content={`https://moviestremtv.com/in/${language}`} />
         <meta property="og:site_name" content="Moviestremtv" />
         <link rel="canonical" href={`https://moviestremtv.com/in/${language}`} />
-
       </head>
 
       <div className="pt-[100px] px-9 pt-[50px]">
@@ -90,19 +89,17 @@ const LanguagePage = ({ params }: { params: { language: string } }) => {
               {movies.map((movie) => (
                 <Link
                   key={movie.slug}
-                  href={`/${movie.category.split(", ")[0]}/${movie.slug}`} // Create dynamic link to movie page
+                  href={`/${movie.category.split(", ")[0]}/${movie.slug}`}
                 >
                   <div className="movie-card cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-in-out relative shadow-lg hover:shadow-2xl rounded-lg overflow-hidden">
-                    {/* Movie Image */}
                     <img
                       src={movie.image}
                       alt={movie.name}
                       className="w-full h-auto object-cover"
                     />
-
-                    {/* Movie Info */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-end">
                       <h2 className="text-xl text-white font-bold">{movie.name}</h2>
+                      <p className="text-sm">{movie.releaseDate}</p>
                       <div className="flex justify-between items-center mt-2 text-white">
                         <h3 className="text-lg font-medium">{movie.language.split(", ")[0]}</h3>
                         <p className="text-yellow-400">{movie.rating} ⭐</p>
@@ -123,7 +120,6 @@ const LanguagePage = ({ params }: { params: { language: string } }) => {
         )}
       </div>
     </>
-
   );
 };
 
