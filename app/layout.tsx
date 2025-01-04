@@ -59,7 +59,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <meta name="google-site-verification" content="O5RyKRlsslVL2SRzbfS8uWFZJyaTm7fLpN3x5u1BG4g" />
+        {/* <meta name="google-site-verification" content="O5RyKRlsslVL2SRzbfS8uWFZJyaTm7fLpN3x5u1BG4g" /> */}
       </head>
 
       <body
@@ -68,7 +68,7 @@ export default function RootLayout({
         <Navbar />
         <main className="-p-4 -pb-9">{children}</main>
         <Footer />
-        <Script
+        {/* <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-MWK28923Y1`}
         />
@@ -79,9 +79,8 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-MWK28923Y1', {
               page_path: window.location.pathname,
-            });
-          `}
-        </Script>
+            });  `}
+        </Script> */}
       </body>
     </html>
   );
